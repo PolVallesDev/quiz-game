@@ -1,14 +1,55 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz Web App</title>
+  <title>Quiz Game Web</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <main id="app-container">
-    <h1>Quiz Web</h1>
+    <!-- PANTALLA 1: INICIO -->
+    <section id="start-screen" class="screen">
+      <h1>Quiz Game</h1>
+      <p class="subtitle">Introduce tu nombre y elige categoría:</p>
+      <div class="input-group">
+        <input type="text" id="player-name" placeholder="Tu nombre..." autocomplete="off" required>
+      </div>
+      <div class="category-buttons">
+        <button type="button" class="btn btn-category" data-category="deportes">Categoría A (Deportes)</button>
+        <button type="button" class="btn btn-category" data-category="comida">Categoría B (Comida)</button>
+      </div>
+    </section>
+
+    <!-- PANTALLA 2: JUEGO -->
+    <section id="quiz-screen" class="screen hidden">
+      <header class="quiz-header">
+        <span>Jugador: <strong id="display-player-name">-</strong></span>
+        <span>Tiempo: <strong id="timer">15</strong>s</span>
+        <span>Puntos: <strong id="current-score">0</strong></span>
+      </header>
+      <div class="progress-bar-container">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+      <div class="question-container">
+        <span id="question-number">Pregunta 1</span>
+        <h2 id="question-text">Cargando pregunta...</h2>
+      </div>
+      <div id="options-container" class="options-grid"></div>
+      <button id="next-btn" class="btn btn-secondary hidden">Siguiente Pregunta →</button>
+    </section>
+
+    <!-- PANTALLA 3: RESULTADOS -->
+    <section id="results-screen" class="screen hidden">
+      <h2>¡Partida Finalizada!</h2>
+      <p>Jugador: <span id="final-player-name"></span></p>
+      <p>Puntuación Final: <span id="final-score">0</span></p>
+      <p>Correctas: <strong id="correct-count">0</strong> | Incorrectas: <strong id="incorrect-count">0</strong></p>
+      <div class="results-actions">
+        <button id="restart-btn" class="btn btn-primary">Volver a Jugar</button>
+        <button id="exit-btn" class="btn btn-outline">Salir</button>
+      </div>
+    </section>
   </main>
   <script src="js/script.js"></script>
 </body>
