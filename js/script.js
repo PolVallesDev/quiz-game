@@ -180,6 +180,38 @@ function cargarPreguntaActual() {
   }
 }
 
+let tiempoRestante = 15;
+
+let temporizadorInterval = null;
+
+function iniciarTemporizador() {
+
+  clearInterval(temporizadorInterval);
+
+  tiempoRestante = 15;
+
+  document.getElementById("timer").textContent = tiempoRestante;
+
+  temporizadorInterval = setInterval(() => {
+
+    tiempoRestante--;
+
+    document.getElementById("timer").textContent = tiempoRestante;
+
+    if (tiempoRestante <= 0) {
+
+      clearInterval(temporizadorInterval);
+
+      bloquearOpciones();
+
+      document.getElementById("next-btn").classList.remove("hidden");
+
+    }
+
+  }, 1000);
+
+}
+
 // ==========================================
 // 7. EVALUACIÓN Y FEEDBACK EN TIEMPO REAL
 // ==========================================
